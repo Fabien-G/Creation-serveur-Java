@@ -24,11 +24,12 @@ import java.util.Map;
 public class Main {
 
     public static void main(String[] args) throws IOException {
+        // *******************************************************************************************
 
         // Création d'un serveur HTTP qui écoute sur le port 3000.
         // "0" signifie que le serveur utilise la valeur par défaut pour la file d'attente.
         HttpServer server = HttpServer.create(new InetSocketAddress(3000), 0);
-
+        // *******************************************************************************************
         // Route permettant au navigateur de récupérer le fichier CSS.
         server.createContext("/style2.css", exchange -> {
 
@@ -68,6 +69,8 @@ public class Main {
                 StandardCharsets.UTF_8
             );
 
+            // *******************************************************************************************
+
             // Transforme les données du formulaire POST
             // en Map clé / valeur.
             Map<String, String> post = parse(corps);
@@ -99,7 +102,7 @@ public class Main {
 
         // Démarre le serveur HTTP.
         server.start();
-
+         // ************************************
         // Affiche dans la console l'adresse permettant d'accéder au serveur.
         System.out.println("Serveur démarré : http://localhost:3000");
     }
@@ -111,6 +114,7 @@ public class Main {
     //
     // en Map :
     // {a=1, b=2}
+     // ************************************
     static Map<String, String> parse(String data) {
 
         // Création d'une Map qui conserve l'ordre d'insertion des éléments.
@@ -157,6 +161,7 @@ public class Main {
 
     // Protège les caractères spéciaux HTML présents dans une chaîne.
     // Cela évite qu'une valeur reçue soit interprétée comme du HTML.
+     // ************************************
     static String escape(String s) {
 
         // Remplace les caractères spéciaux par leurs équivalents HTML.
@@ -167,7 +172,7 @@ public class Main {
             .replace("\"", "&quot;");
     }
 
-
+     // ************************************
     // Génère un tableau HTML à partir d'un titre et d'une Map de données.
     static String tableau(String titre, Map<String, String> donnees) {
 
@@ -203,7 +208,7 @@ public class Main {
         Map<String, String> query,
         Map<String, String> post
     ) {
-
+         // ************************************
         // Utilisation d'un Text Block Java pour écrire
         // directement le HTML sur plusieurs lignes.
         //
@@ -234,7 +239,10 @@ public class Main {
               <h2>Formulaire</h2>
 
               <!-- Formulaire envoyé avec la méthode POST -->
-              <form method="POST" action="/">
+              <!-- <form method="GET" action="/"> -->
+
+               <!-- Formulaire envoyé avec la méthode POST -->
+               <form method="POST" action="/"> 
 
                 <!-- Champ permettant de saisir le nom -->
                 <input name="nom" placeholder="nom">
