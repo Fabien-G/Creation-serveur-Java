@@ -1,0 +1,52 @@
+
+
+.button {
+    position: relative;
+    padding: 14px 15px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(45deg, #0ce39a, #69007f, #fc0987);
+    color: #fff;
+    font-size: 1.25rem;
+    cursor: pointer;
+}
+
+/* Le fond noir */
+.button::before {
+    content: '';
+    position: absolute;
+    inset: 1px;
+    background: #272727;
+    border-radius: 9px;
+    transition: 0.5s;
+    z-index: 1;
+}
+
+/* Le texte */
+.button span {
+    position: relative;
+    z-index: 2;
+}
+
+/* La lumière autour */
+.button::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg, #0ce39a, #69007f, #fc0987);
+    border-radius: 9px;
+    transition: 0.5s;
+    opacity: 0;
+    filter: blur(20px);
+    z-index: 0;
+}
+
+/* Au survol : le fond noir devient transparent */
+.button:hover::before {
+    opacity: 0;
+}
+
+/* Et la lumière apparaît */
+.button:hover::after {
+    opacity: 1;
+}
